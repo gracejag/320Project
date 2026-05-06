@@ -145,6 +145,7 @@
     color: #888;
     font-style: italic;
   }
+  figure img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
   figcaption { margin-top: 10px; font-size: 0.85rem; color: #555; font-style: normal; }
   .placeholder { color: #888; font-style: italic; }
 
@@ -392,9 +393,141 @@ df = cap_outliers(df, 'weekly_hours')</code></pre>
   </p>
 
   <h2>Exploratory Data Analysis</h2>
-  <p class="placeholder">
-    Describe what the data looks like, summary statistics, distributions, and any patterns you
-    noticed. Include plots, tables, and short interpretations of what each one shows.
+  <p>
+    With the data cleaned, we ran three exploratory analyses to test which features carry signal
+    against <code>salary_usd</code>. Each one isolates a single variable so we can decide which
+    features are worth carrying forward into the modeling stage.
+  </p>
+
+  <h3>Salary by Experience Level</h3>
+  <p>
+    We grouped the data by <code>experience_level</code>, sorted the levels by mean salary, and
+    plotted the resulting distributions as a boxplot. This lets us compare not just the average pay
+    at each tier but also the spread and presence of outliers.
+  </p>
+
+  <pre><code>import matplotlib.pyplot as plt
+
+mean_salaries = df.groupby("experience_level")["salary_usd"].mean()
+sorted_levels = mean_salaries.sort_values().index
+
+groups = [df[df["experience_level"] == lvl]["salary_usd"].dropna()
+          for lvl in sorted_levels]
+
+fig, ax = plt.subplots()
+ax.boxplot(groups, tick_labels=sorted_levels)
+ax.set_title("Salary Distribution by Experience Level")
+ax.set_xlabel("Experience Level")
+ax.set_ylabel("Salary (USD)")
+plt.show()</code></pre>
+
+  <figure>
+    [ Boxplot: Salary Distribution by Experience Level ]
+    <figcaption>Figure 1. Salary distributions grouped by experience level, sorted by mean salary.</figcaption>
+  </figure>
+
+  <p>
+    From the boxplot, salary increases with experience level, with medians ranging from around $65k
+    for entry-level roles up to roughly $150k for lead roles. The spread of the data widens at higher
+    levels, meaning senior and lead salaries are more variable in general. There are also notable
+    outliers at each level, suggesting there are factors besides experience that influence salary.
+  </p>
+
+  <h3>Salary at Large vs. Startup Companies</h3>
+  <p>
+    Next we asked whether company size meaningfully predicts pay. We ran a two-sample
+    <em>t</em>-test comparing salaries at large companies against startups, and visualized the two
+    distributions side-by-side.
+  </p>
+
+  <pre><code>from scipy.stats import ttest_ind
+
+large   = df[df["company_size"] == "Large"]["salary_usd"].dropna()
+startup = df[df["company_size"] == "Startup"]["salary_usd"].dropna()
+
+t_stat, p = ttest_ind(large, startup)
+print(f"T-statistic: {t_stat:.3f}, p-value: {p:.4f}")
+# T-statistic: -0.866, p-value: 0.3867
+
+plt.boxplot([large, startup], tick_labels=["Large", "Startup"])
+plt.title("Salary: Large vs Startup Companies")
+plt.xlabel("Company Size")
+plt.ylabel("Salary (USD)")
+plt.show()</code></pre>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Statistic</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>t-statistic</td><td>&minus;0.866</td></tr>
+      <tr><td>p-value</td><td>0.3867</td></tr>
+      <tr><td>Significant at &alpha; = 0.05?</td><td>No</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    [ Boxplot: Salary at Large vs. Startup Companies ]
+    <figcaption>Figure 2. Salary distributions at large companies compared to startups.</figcaption>
+  </figure>
+
+  <p>
+    From this two-sample <em>t</em>-test comparing salaries at large versus startup companies, there
+    is no statistically significant difference (<em>t</em> = &minus;0.866, <em>p</em> = 0.387). The
+    boxplots confirm this visually since both groups have similar medians around $87k and similar
+    spreads. This suggests company size is not a meaningful predictor of salary in this dataset,
+    which is an important insight to consider when selecting features for the model.
+  </p>
+
+  <h3>Salary vs. Job Security Score</h3>
+  <p>
+    For our continuous test, we computed the Pearson correlation between
+    <code>job_security_score</code> and <code>salary_usd</code> and plotted the relationship as a
+    scatter to see whether higher-security roles also tend to pay more.
+  </p>
+
+  <pre><code>from scipy.stats import pearsonr
+
+corr, p = pearsonr(df["job_security_score"], df["salary_usd"])
+print(f"Pearson r: {corr:.3f}, p-value: {p:.4g}")
+# Pearson r: 0.434, p-value: < 0.0001
+
+plt.scatter(df["job_security_score"], df["salary_usd"], alpha=0.3)
+plt.title("Salary vs Job Security Score")
+plt.xlabel("Job Security Score")
+plt.ylabel("Salary (USD)")
+plt.show()</code></pre>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Statistic</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pearson r</td><td>0.434</td></tr>
+      <tr><td>p-value</td><td>&lt; 0.0001</td></tr>
+    </tbody>
+  </table>
+
+  <figure>
+    [ Scatter plot: Salary vs Job Security Score ]
+    <figcaption>Figure 3. Each point is a job posting; the upward trend reflects a moderate positive correlation.</figcaption>
+  </figure>
+
+  <p>
+    From this output, we can see there is a moderate positive correlation between job security score
+    and salary. The Pearson <em>r</em> value is 0.434 (<em>p</em> &lt; 0.0001), meaning higher job
+    security comes with higher pay. This is statistically significant and visually confirmed by the
+    upward trend in the scatter plot. This suggests that job security score is a meaningful feature
+    that could influence salary prediction in further analysis.
+  </p>
+
+  <h3>Summary of Findings</h3>
+  <p>
+    Three takeaways from the EDA shape our modeling decisions. First, experience level is a clear
+    ordinal predictor of salary and should be encoded as such. Second, company size on its own does
+    not significantly predict salary, so we will only include it if it adds value in combination with
+    other features. Third, job security score is the strongest single-variable signal we found, and
+    will be a core feature in our regression model.
   </p>
 
   <h2>Primary Analysis</h2>
@@ -409,7 +542,7 @@ df = cap_outliers(df, 'weekly_hours')</code></pre>
   </p>
   <figure>
     [ Your plot will go here ]
-    <figcaption>Figure 1. Caption describing what the plot shows.</figcaption>
+    <figcaption>Figure 4. Caption describing what the plot shows.</figcaption>
   </figure>
 
   <h2>Insights &amp; Conclusions</h2>
