@@ -13,7 +13,7 @@
     line-height: 1.6;
     font-size: 15px;
     padding: 48px 64px;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
@@ -62,6 +62,60 @@
     vertical-align: top;
   }
   .data-table td.val { color: #444; font-size: 0.87rem; max-width: 480px; }
+
+  /* df.head() preview table */
+  .preview-wrap {
+    overflow-x: auto;
+    margin: 12px 0 16px;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+  }
+  .preview-table {
+    border-collapse: collapse;
+    font-size: 0.78rem;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    white-space: nowrap;
+    min-width: 100%;
+  }
+  .preview-table thead tr { background: #f6f8fa; }
+  .preview-table th {
+    text-align: right;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #eee;
+    color: #111;
+  }
+  .preview-table th:first-child { text-align: left; }
+  .preview-table td {
+    text-align: right;
+    padding: 6px 14px;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #f0f0f0;
+    color: #111;
+  }
+  .preview-table td:first-child { text-align: left; color: #555; }
+  .preview-table tr:nth-child(odd) td { background: #fafafa; }
+  .preview-table .ellipsis { color: #aaa; }
+  .preview-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin: 4px 0 16px;
+    font-style: italic;
+  }
+
+  /* dtype output */
+  .dtype-out {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.82rem;
+    margin: 8px 0 16px;
+    line-height: 1.7;
+    color: #111;
+  }
 
   ul.sources { margin: 8px 0 12px 20px; }
   ul.sources li { margin-bottom: 4px; }
@@ -158,7 +212,7 @@
   <h3>Sources</h3>
   <ul class="sources">
     <li>
-      <strong>Global AI &amp; Data Jobs Salary Dataset</strong>
+      <strong>Global AI &amp; Data Jobs Salary Dataset</strong> &mdash;
       <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
         https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
       </a>
@@ -174,26 +228,67 @@ print(df.dtypes.value_counts())
 print(df.isnull().sum().sum())
 df.head()</code></pre>
 
+  <div class="dtype-out">
+(90000, 35)<br>
+int64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18<br>
+float64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<br>
+object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
+Name: count, dtype: int64<br>
+Missing values: 0
+  </div>
+
+  <div class="preview-wrap">
+    <table class="preview-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>id</th>
+          <th>country</th>
+          <th>job_role</th>
+          <th>ai_specialization</th>
+          <th>experience_level</th>
+          <th>experience_years</th>
+          <th>salary_usd</th>
+          <th>bonus_usd</th>
+          <th>education_required</th>
+          <th>industry</th>
+          <th class="ellipsis">...</th>
+          <th>vacation_days</th>
+          <th>skill_demand_score</th>
+          <th>automation_risk</th>
+          <th>job_security_score</th>
+          <th>career_growth_score</th>
+          <th>work_life_balance_score</th>
+          <th>promotion_speed</th>
+          <th>salary_percentile</th>
+          <th>cost_of_living_index</th>
+          <th>employee_satisfaction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td><td>1</td><td>UAE</td><td>Machine Learning Engineer</td><td>Reinforcement Learning</td><td>Entry</td><td>0</td><td>66465.0</td><td>5395</td><td>Master</td><td>Automotive</td><td class="ellipsis">...</td><td>27</td><td>12</td><td>76</td><td>57</td><td>65</td><td>73</td><td>15</td><td>55</td><td>1.23</td><td>76</td>
+        </tr>
+        <tr>
+          <td>1</td><td>2</td><td>USA</td><td>AI Engineer</td><td>LLM</td><td>Entry</td><td>1</td><td>75507.0</td><td>11713</td><td>Bootcamp</td><td>Retail</td><td class="ellipsis">...</td><td>27</td><td>54</td><td>29</td><td>69</td><td>60</td><td>51</td><td>15</td><td>58</td><td>0.87</td><td>67</td>
+        </tr>
+        <tr>
+          <td>2</td><td>3</td><td>Brazil</td><td>Research Scientist</td><td>Analytics</td><td>Entry</td><td>0</td><td>41660.0</td><td>5268</td><td>PhD</td><td>Healthcare</td><td class="ellipsis">...</td><td>13</td><td>12</td><td>49</td><td>70</td><td>59</td><td>68</td><td>37</td><td>13</td><td>2.13</td><td>61</td>
+        </tr>
+        <tr>
+          <td>3</td><td>4</td><td>India</td><td>Software Engineer AI</td><td>Computer Vision</td><td>Senior</td><td>6</td><td>43268.0</td><td>7975</td><td>Diploma</td><td>Tech</td><td class="ellipsis">...</td><td>30</td><td>80</td><td>47</td><td>79</td><td>65</td><td>55</td><td>46</td><td>74</td><td>1.49</td><td>56</td>
+        </tr>
+        <tr>
+          <td>4</td><td>5</td><td>Germany</td><td>Machine Learning Engineer</td><td>Computer Vision</td><td>Entry</td><td>0</td><td>69119.0</td><td>4758</td><td>Master</td><td>Retail</td><td class="ellipsis">...</td><td>24</td><td>82</td><td>47</td><td>64</td><td>52</td><td>69</td><td>17</td><td>21</td><td>0.87</td><td>72</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="preview-note">5 rows &times; 35 columns</p>
+
   <p>The dataset contains <strong>90,000 rows and 35 columns</strong>. Of these, 18 are integer features, 9 are floats, and 8 are categorical object columns. A check for missing values returned 0, meaning the dataset is fully complete with no nulls to handle and no columns needed to be dropped.</p>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Property</th><th>Value</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Total rows</td><td>90,000</td></tr>
-      <tr><td>Total columns</td><td>35</td></tr>
-      <tr><td>Integer features</td><td>18</td></tr>
-      <tr><td>Float features</td><td>9</td></tr>
-      <tr><td>Categorical (object) features</td><td>8</td></tr>
-      <tr><td>Missing values</td><td>0</td></tr>
-      <tr><td>Columns dropped</td><td>None</td></tr>
-    </tbody>
-  </table>
-
   <h3>Categorical Features</h3>
-  <p>The 8 categorical columns and their unique values are as follows:</p>
-
   <pre><code>categorical_features = df.select_dtypes(include=['object']).columns
 for col in categorical_features:
     print(f"{col}: {df[col].unique()}")</code></pre>
