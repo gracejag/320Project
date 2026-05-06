@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jobs & AI — Spring 2026 Data Science Project</title>
+<title>Jobs & AI — Fall 2024 Data Science Project</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -17,35 +17,14 @@
     margin: 0 auto;
   }
 
-  h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    line-height: 1.2;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 36px;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 40px 0 14px;
-  }
-
-  p {
-    margin-bottom: 12px;
-    color: #111;
-  }
-
+  h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; line-height: 1.2; }
+  .subtitle { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 36px; }
+  h2 { font-size: 1.2rem; font-weight: 700; margin: 40px 0 14px; }
+  h3 { font-size: 1rem; font-weight: 700; margin: 24px 0 10px; }
+  p { margin-bottom: 12px; color: #111; }
   a { color: #1a6fc4; text-decoration: none; }
   a:hover { text-decoration: underline; }
 
-  /* Contributions table */
   .contrib-table {
     border-collapse: collapse;
     margin: 8px 0 0 120px;
@@ -54,35 +33,39 @@
   .contrib-table th {
     text-align: left;
     font-weight: 700;
-    padding: 6px 24px 6px 0;
+    padding: 6px 24px 6px 12px;
     border-bottom: 1px solid #ccc;
     color: #111;
   }
   .contrib-table td {
-    padding: 7px 24px 7px 0;
+    padding: 7px 32px 7px 12px;
     vertical-align: top;
     color: #111;
   }
-  .contrib-table tr:nth-child(odd) td {
-    background: #eef3fb;
-  }
-  .contrib-table tr:nth-child(odd) td:first-child {
-    color: #1a6fc4;
-  }
-  .contrib-table td, .contrib-table th {
-    padding-left: 12px;
-    padding-right: 32px;
-  }
+  .contrib-table tr:nth-child(odd) td { background: #eef3fb; }
+  .contrib-table tr:nth-child(odd) td:first-child { color: #1a6fc4; }
 
-  /* Source list */
-  ul.sources {
-    margin: 8px 0 12px 20px;
+  .data-table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 12px 0 16px;
   }
-  ul.sources li {
-    margin-bottom: 4px;
+  .data-table th {
+    text-align: left;
+    font-weight: 700;
+    padding: 6px 48px 6px 0;
+    border-bottom: 1px solid #ccc;
   }
+  .data-table td {
+    padding: 6px 48px 6px 0;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+  }
+  .data-table td.val { color: #444; font-size: 0.87rem; max-width: 480px; }
 
-  /* Code block */
+  ul.sources { margin: 8px 0 12px 20px; }
+  ul.sources li { margin-bottom: 4px; }
+
   pre {
     background: #f6f8fa;
     border: 1px solid #e1e4e8;
@@ -90,7 +73,7 @@
     padding: 16px 18px;
     overflow-x: auto;
     font-size: 0.82rem;
-    margin: 8px 0 0;
+    margin: 8px 0 16px;
     line-height: 1.55;
   }
   pre code {
@@ -98,7 +81,6 @@
     color: #111;
   }
 
-  /* Figure */
   figure {
     margin: 20px 0;
     border: 1px solid #ddd;
@@ -109,18 +91,8 @@
     color: #888;
     font-style: italic;
   }
-  figcaption {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    color: #555;
-    font-style: normal;
-  }
-
-  /* Placeholder */
-  .placeholder {
-    color: #888;
-    font-style: italic;
-  }
+  figcaption { margin-top: 10px; font-size: 0.85rem; color: #555; font-style: normal; }
+  .placeholder { color: #888; font-style: italic; }
 
   @media (max-width: 700px) {
     body { padding: 24px 20px; }
@@ -182,29 +154,147 @@
   </p>
 
   <h2>Data Curation</h2>
-  <p class="placeholder">
-    Walk through how you loaded and transformed the data so it was ready for analysis — e.g.,
-    setting up a database and querying with SQL, or building a pandas DataFrame.
-  </p>
 
-  <h2>Sources</h2>
+  <h3>Sources</h3>
   <ul class="sources">
     <li>
-      <strong>Global AI &amp; Data Jobs Salary Dataset</strong> —
+      <strong>Global AI &amp; Data Jobs Salary Dataset</strong>
       <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
         https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
       </a>
     </li>
   </ul>
 
-  <h2>Preprocessing</h2>
-  <pre><code># Load and clean the salary dataset
-import pandas as pd
+  <h3>Loading the Dataset</h3>
+  <pre><code>import pandas as pd
 
-df = pd.read_csv("data.csv")
-df = df.dropna()
-df.head()
-</code></pre>
+df = pd.read_csv("global_ai_jobs.csv")
+print(df.shape)
+print(df.dtypes.value_counts())
+print(df.isnull().sum().sum())
+df.head()</code></pre>
+
+  <p>The dataset contains <strong>90,000 rows and 35 columns</strong>. Of these, 18 are integer features, 9 are floats, and 8 are categorical object columns. A check for missing values returned 0, meaning the dataset is fully complete with no nulls to handle and no columns needed to be dropped.</p>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Property</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Total rows</td><td>90,000</td></tr>
+      <tr><td>Total columns</td><td>35</td></tr>
+      <tr><td>Integer features</td><td>18</td></tr>
+      <tr><td>Float features</td><td>9</td></tr>
+      <tr><td>Categorical (object) features</td><td>8</td></tr>
+      <tr><td>Missing values</td><td>0</td></tr>
+      <tr><td>Columns dropped</td><td>None</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Categorical Features</h3>
+  <p>The 8 categorical columns and their unique values are as follows:</p>
+
+  <pre><code>categorical_features = df.select_dtypes(include=['object']).columns
+for col in categorical_features:
+    print(f"{col}: {df[col].unique()}")</code></pre>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Column</th><th>Unique values</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>country</td>
+        <td class="val">UAE, USA, Brazil, India, Germany, Japan, Australia, France, Singapore, Netherlands, Canada, UK</td>
+      </tr>
+      <tr>
+        <td>job_role</td>
+        <td class="val">Machine Learning Engineer, AI Engineer, Research Scientist, Software Engineer AI, Data Analyst, Computer Vision Engineer, NLP Engineer, Data Scientist</td>
+      </tr>
+      <tr>
+        <td>ai_specialization</td>
+        <td class="val">Reinforcement Learning, LLM, Analytics, Computer Vision, NLP, MLOps, Forecasting, Generative AI</td>
+      </tr>
+      <tr>
+        <td>experience_level</td>
+        <td class="val">Entry, Senior, Mid, Lead</td>
+      </tr>
+      <tr>
+        <td>education_required</td>
+        <td class="val">Master, Bootcamp, PhD, Diploma, Bachelor</td>
+      </tr>
+      <tr>
+        <td>industry</td>
+        <td class="val">Automotive, Retail, Healthcare, Tech, Consulting, Telecom, Energy, Gaming, Education, Finance</td>
+      </tr>
+      <tr>
+        <td>company_size</td>
+        <td class="val">Small, Large, Medium, Startup, Enterprise</td>
+      </tr>
+      <tr>
+        <td>work_mode</td>
+        <td class="val">Remote, Onsite, Hybrid</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Salary Distribution</h3>
+  <pre><code>print(df['salary_usd'].describe())</code></pre>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Statistic</th><th>Value (USD)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Count</td><td>90,000</td></tr>
+      <tr><td>Mean</td><td>$96,331</td></tr>
+      <tr><td>Std dev</td><td>$43,280</td></tr>
+      <tr><td>Min</td><td>$28,000</td></tr>
+      <tr><td>25th percentile</td><td>$64,677</td></tr>
+      <tr><td>Median</td><td>$87,544</td></tr>
+      <tr><td>75th percentile</td><td>$123,906</td></tr>
+      <tr><td>Max</td><td>$212,750</td></tr>
+    </tbody>
+  </table>
+
+  <p>The average salary across all roles and countries is $96,331. There is a wide spread with a standard deviation of $43,280, reflecting the diversity of roles, experience levels, and countries in the dataset. The salary range runs from $28,000 at the low end up to $212,750 at the top.</p>
+
+  <h3>Handling Outliers</h3>
+  <p>
+    Extreme values were moderated using an inter quartile capping rule that replaces observations
+    lying beyond 1.5 times the IQR with the nearest boundary. This was applied to three key numeric columns:
+    <code>salary_usd</code>, <code>bonus_usd</code>, and <code>weekly_hours</code>.
+  </p>
+
+  <pre><code>def cap_outliers(df, col):
+    Q1, Q3 = df[col].quantile(0.25), df[col].quantile(0.75)
+    IQR = Q3 - Q1
+    lo, hi = Q1 - 1.5*IQR, Q3 + 1.5*IQR
+    n = ((df[col] < lo) | (df[col] > hi)).sum()
+    print(f"Outliers in {col}: {n}")
+    df[col] = df[col].clip(lo, hi)
+    return df
+
+df = cap_outliers(df, 'salary_usd')
+df = cap_outliers(df, 'bonus_usd')
+df = cap_outliers(df, 'weekly_hours')</code></pre>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Column</th><th>Outliers detected</th><th>Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>salary_usd</td><td>1,007</td><td>Capped to IQR bounds</td></tr>
+      <tr><td>bonus_usd</td><td>2,748</td><td>Capped to IQR bounds</td></tr>
+      <tr><td>weekly_hours</td><td>0</td><td>No action needed</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    After capping, the dataset retains all 90,000 rows. The <code>salary_usd</code> and <code>bonus_usd</code>
+    columns were converted from integer to float type as a result of the clipping operation. No rows were
+    dropped during preprocessing.
+  </p>
 
   <h2>Exploratory Data Analysis</h2>
   <p class="placeholder">
