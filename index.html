@@ -3,447 +3,234 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Fall 2024 Data Science Project</title>
+<title>Jobs & AI — Fall 2024 Data Science Project</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --surface: #161b22;
-    --surface-2: #1c2128;
-    --border: #30363d;
-    --text: #e6edf3;
-    --text-muted: #9198a1;
-    --accent: #7c9cff;
-    --accent-soft: rgba(124, 156, 255, 0.12);
-  }
-
-  * { box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .layout {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    max-width: 1200px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    color: #111;
+    line-height: 1.6;
+    font-size: 15px;
+    padding: 48px 64px;
+    max-width: 1100px;
     margin: 0 auto;
-    gap: 48px;
-    padding: 48px 32px;
   }
 
-  nav.toc {
-    position: sticky;
-    top: 32px;
-    align-self: start;
-    border-left: 1px solid var(--border);
-    padding-left: 20px;
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
     font-size: 0.9rem;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 36px;
   }
 
-  nav.toc h4 {
-    margin: 0 0 12px;
-    font-size: 0.75rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    font-weight: 600;
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 40px 0 14px;
   }
 
-  nav.toc ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    counter-reset: toc;
-  }
-
-  nav.toc li {
-    counter-increment: toc;
-    margin: 6px 0;
-  }
-
-  nav.toc a {
-    color: var(--text-muted);
-    text-decoration: none;
-    display: block;
-    padding: 4px 0;
-    transition: color 0.15s ease;
-  }
-
-  nav.toc a::before {
-    content: counter(toc) ". ";
-    color: var(--border);
-  }
-
-  nav.toc a:hover {
-    color: var(--accent);
-  }
-
-  main {
-    min-width: 0;
-  }
-
-  header.hero {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 32px;
-    margin-bottom: 40px;
-  }
-
-  header.hero .eyebrow {
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+  p {
     margin-bottom: 12px;
+    color: #111;
   }
 
-  header.hero h1 {
-    margin: 0 0 16px;
-    font-size: 2.5rem;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-  }
+  a { color: #1a6fc4; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-  header.hero .authors {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-  }
-
-  section {
-    margin-bottom: 56px;
-    scroll-margin-top: 24px;
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    margin: 0 0 16px;
-    letter-spacing: -0.01em;
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-  }
-
-  section h2 .num {
-    color: var(--accent);
+  /* Contributions table */
+  .contrib-table {
+    border-collapse: collapse;
+    margin: 8px 0 0 120px;
     font-size: 0.9rem;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
+  }
+  .contrib-table th {
+    text-align: left;
+    font-weight: 700;
+    padding: 6px 24px 6px 0;
+    border-bottom: 1px solid #ccc;
+    color: #111;
+  }
+  .contrib-table td {
+    padding: 7px 24px 7px 0;
+    vertical-align: top;
+    color: #111;
+  }
+  .contrib-table tr:nth-child(odd) td {
+    background: #eef3fb;
+  }
+  .contrib-table tr:nth-child(odd) td:first-child {
+    color: #1a6fc4;
+  }
+  .contrib-table td, .contrib-table th {
+    padding-left: 12px;
+    padding-right: 32px;
   }
 
-  section h3 {
-    font-size: 1.1rem;
-    margin: 24px 0 8px;
-    color: var(--text);
+  /* Source list */
+  ul.sources {
+    margin: 8px 0 12px 20px;
+  }
+  ul.sources li {
+    margin-bottom: 4px;
   }
 
-  p, li {
-    color: var(--text);
+  /* Code block */
+  pre {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: 4px;
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    margin: 8px 0 0;
+    line-height: 1.55;
+  }
+  pre code {
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    color: #111;
   }
 
+  /* Figure */
+  figure {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+    background: #fafafa;
+    color: #888;
+    font-style: italic;
+  }
+  figcaption {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #555;
+    font-style: normal;
+  }
+
+  /* Placeholder */
   .placeholder {
-    color: var(--text-muted);
+    color: #888;
     font-style: italic;
   }
 
-  .contrib-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px 24px;
-    margin: 16px 0;
-  }
-
-  .contrib-card h3 {
-    margin-top: 0;
-    color: var(--accent);
-  }
-
-  .contrib-card ul {
-    margin: 8px 0 0;
-    padding-left: 20px;
-  }
-
-  .contrib-card li {
-    margin: 4px 0;
-  }
-
-  .contrib-card .tag {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-right: 8px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  }
-
-  .legend {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-bottom: 20px;
-    font-size: 0.92rem;
-  }
-
-  .legend dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 6px 12px;
-    margin: 0;
-  }
-
-  .legend dt {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .legend dd {
-    margin: 0;
-    color: var(--text-muted);
-  }
-
-  code {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  }
-
-  pre {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 16px;
-    overflow-x: auto;
-  }
-
-  pre code {
-    background: none;
-    border: none;
-    padding: 0;
-  }
-
-  a {
-    color: var(--accent);
-  }
-
-  figure {
-    margin: 24px 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 24px;
-    text-align: center;
-  }
-
-  figure img {
-    max-width: 100%;
-    border-radius: 6px;
-  }
-
-  figcaption {
-    margin-top: 12px;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-  }
-
-  footer {
-    margin-top: 80px;
-    padding-top: 24px;
-    border-top: 1px solid var(--border);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    text-align: center;
-  }
-
-  @media (max-width: 860px) {
-    .layout {
-      grid-template-columns: 1fr;
-      padding: 24px 20px;
-      gap: 24px;
-    }
-    nav.toc {
-      position: static;
-      border-left: none;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-      order: 2;
-    }
-    main { order: 1; }
-    header.hero h1 { font-size: 1.9rem; }
+  @media (max-width: 700px) {
+    body { padding: 24px 20px; }
+    .contrib-table { margin-left: 0; }
   }
 </style>
 </head>
 <body>
-  <div class="layout">
-    <nav class="toc" aria-label="Table of contents">
-      <h4>Contents</h4>
-      <ol>
-        <li><a href="#contributions">Contributions</a></li>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#data-curation">Data Curation</a></li>
-        <li><a href="#eda">Exploratory Analysis</a></li>
-        <li><a href="#primary">Primary Analysis</a></li>
-        <li><a href="#visualization">Visualization</a></li>
-        <li><a href="#conclusions">Insights &amp; Conclusions</a></li>
-      </ol>
-    </nav>
 
-    <main>
-      <header class="hero">
-        <div class="eyebrow">Fall 2024 Data Science Project</div>
-        <h1>Jobs &amp; AI</h1>
-        <div class="authors">
-          By <strong>Grace Jagga</strong> &middot;
-          <strong>Venya Goyal</strong> &middot;
-          <strong>Hansini Chokkalingam</strong> &middot;
-          <strong>Aabha Belsare</strong> &middot;
-          <strong>Yasaswini Bommareddy</strong>
-        </div>
-      </header>
+  <h1>🤖 Jobs &amp; AI</h1>
+  <p class="subtitle">CMSC 320 &middot; Fall 2024 Final Project Tutorial</p>
 
-      <!-- 1. Contributions -->
-      <section id="contributions">
-        <h2><span class="num">01</span> Contributions</h2>
+  <h2>Contributions</h2>
+  <table class="contrib-table">
+    <thead>
+      <tr>
+        <th>Member</th>
+        <th>Sections</th>
+        <th>1–2 sentence summary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Grace Jagga</td>
+        <td>A, C</td>
+        <td>Brief summary of project idea and data exploration contributions.</td>
+      </tr>
+      <tr>
+        <td>Venya Goyal</td>
+        <td>B, D</td>
+        <td>Brief summary of dataset curation and ML design contributions.</td>
+      </tr>
+      <tr>
+        <td>Hansini Chokkalingam</td>
+        <td>E, G</td>
+        <td>Brief summary of ML training and final report creation.</td>
+      </tr>
+      <tr>
+        <td>Aabha Belsare</td>
+        <td>F, A</td>
+        <td>Brief summary of visualization work and project ideation.</td>
+      </tr>
+      <tr>
+        <td>Yasaswini Bommareddy</td>
+        <td>B, H</td>
+        <td>Brief summary of preprocessing and additional contributions.</td>
+      </tr>
+    </tbody>
+  </table>
 
-        <div class="legend">
-          <dl>
-            <dt>A</dt><dd>Project idea</dd>
-            <dt>B</dt><dd>Dataset curation and preprocessing</dd>
-            <dt>C</dt><dd>Data exploration and summary statistics</dd>
-            <dt>D</dt><dd>ML algorithm design / development</dd>
-            <dt>E</dt><dd>ML algorithm training and test data analysis</dd>
-            <dt>F</dt><dd>Visualization, result analysis, conclusion</dd>
-            <dt>G</dt><dd>Final tutorial report creation</dd>
-            <dt>H</dt><dd>Additional contributions</dd>
-          </dl>
-        </div>
+  <h2>Introduction</h2>
+  <p>
+    We chose this dataset because artificial intelligence and the workforce are relevant topics to us as
+    college students, and this dataset has structured salary data on a global scale. The dataset
+    includes important variables like experience level, company size, and remote work ratio, which
+    could make for meaningful analysis over the course of this project. Analyzing this dataset could
+    help with understanding entry-level roles that are in demand, and how experience plays a role in
+    salary in the big scale tech industry.
+  </p>
 
-        <div class="contrib-card">
-          <h3>Your Name</h3>
-          <ul>
-            <li><span class="tag">A</span> Brief, specific summary of what you did for the project idea.</li>
-            <li><span class="tag">C</span> Brief, specific summary of your data exploration work.</li>
-            <li><span class="tag">F</span> Brief, specific summary of visualizations you produced.</li>
-          </ul>
-        </div>
+  <h2>Data Curation</h2>
+  <p class="placeholder">
+    Walk through how you loaded and transformed the data so it was ready for analysis — e.g.,
+    setting up a database and querying with SQL, or building a pandas DataFrame.
+  </p>
 
-        <div class="contrib-card">
-          <h3>Teammate Name</h3>
-          <ul>
-            <li><span class="tag">B</span> Brief, specific summary of dataset curation work.</li>
-            <li><span class="tag">D</span> Brief, specific summary of ML design contributions.</li>
-            <li><span class="tag">E</span> Brief, specific summary of training and analysis work.</li>
-          </ul>
-        </div>
-      </section>
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li>
+      <strong>Global AI &amp; Data Jobs Salary Dataset</strong> —
+      <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
+        https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
+      </a>
+    </li>
+  </ul>
 
-      <!-- 2. Introduction -->
-      <section id="introduction">
-        <h2><span class="num">02</span> Introduction</h2>
-        <p class="placeholder">
-          Motivate your work here. What is your topic? What question(s) are you trying to
-          answer with your analysis, and why does answering those questions matter?
-          Set the stage for the reader so they understand the "so what" of the project.
-        </p>
-      </section>
-
-      <!-- 3. Data Curation -->
-      <section id="data-curation">
-        <h2><span class="num">03</span> Data Curation</h2>
-        <p>
-          We chose this dataset because artificial intelligence and the workforce are relevant topics to us as
-          college students, and this dataset has structured salary data on a global scale. The dataset
-          includes important variables like experience level, company size, and remote work ratio, which
-          could make for meaningful analysis over the course of this project. Analyzing this dataset could
-          help with understanding entry-level roles that are in demand, and how experience plays a role in
-          salary in the big scale tech industry.
-        </p>
-
-        <h3>Sources</h3>
-        <ul>
-          <li>
-            <strong>Global AI &amp; Data Jobs Salary Dataset</strong> &mdash;
-            <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
-              https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
-            </a>
-          </li>
-        </ul>
-
-        <h3>Preprocessing</h3>
-        <pre><code class="placeholder"># Example: load and clean your data
+  <h2>Preprocessing</h2>
+  <pre><code># Load and clean the salary dataset
 import pandas as pd
 
 df = pd.read_csv("data.csv")
 df = df.dropna()
 df.head()
 </code></pre>
-      </section>
 
-      <!-- 4. Exploratory Data Analysis -->
-      <section id="eda">
-        <h2><span class="num">04</span> Exploratory Data Analysis</h2>
-        <p class="placeholder">
-          Describe what the data looks like, summary statistics, distributions, and any
-          patterns you noticed. Pull in content from checkpoint 2. Include plots, tables,
-          and short interpretations of what each one shows.
-        </p>
-      </section>
+  <h2>Exploratory Data Analysis</h2>
+  <p class="placeholder">
+    Describe what the data looks like, summary statistics, distributions, and any patterns you
+    noticed. Include plots, tables, and short interpretations of what each one shows.
+  </p>
 
-      <!-- 5. Primary Analysis -->
-      <section id="primary">
-        <h2><span class="num">05</span> Primary Analysis</h2>
-        <p class="placeholder">
-          Based on what you found in EDA, pick a machine learning technique
-          (classification, regression, clustering, etc.) that helps you answer the
-          questions from the introduction. Explain why you chose it, how you trained
-          it, and how you evaluated it.
-        </p>
-      </section>
+  <h2>Primary Analysis</h2>
+  <p class="placeholder">
+    Based on what you found in EDA, pick a machine learning technique and explain why you chose
+    it, how you trained it, and how you evaluated it.
+  </p>
 
-      <!-- 6. Visualization -->
-      <section id="visualization">
-        <h2><span class="num">06</span> Visualization</h2>
-        <p class="placeholder">
-          Explain the results and insights of your primary analysis with at least one
-          plot. Every element &mdash; axes, units, colors, legend &mdash; should be labeled
-          and explained.
-        </p>
+  <h2>Visualization</h2>
+  <p class="placeholder">
+    Explain the results and insights of your primary analysis with at least one plot.
+  </p>
+  <figure>
+    [ Your plot will go here ]
+    <figcaption>Figure 1. Caption describing what the plot shows.</figcaption>
+  </figure>
 
-        <figure>
-          <div class="placeholder">[ Your plot will go here ]</div>
-          <figcaption>Figure 1. Caption describing what the plot shows.</figcaption>
-        </figure>
-      </section>
+  <h2>Insights &amp; Conclusions</h2>
+  <p class="placeholder">
+    Wrap up: what did you learn, and what should the reader take away?
+  </p>
 
-      <!-- 7. Insights and Conclusions -->
-      <section id="conclusions">
-        <h2><span class="num">07</span> Insights &amp; Conclusions</h2>
-        <p class="placeholder">
-          Wrap up: what did you learn, and what should the reader take away? An
-          uninformed reader should leave feeling oriented to the topic, and a reader
-          who already knew the area should feel they learned something new.
-        </p>
-      </section>
-
-      <footer>
-        Fall 2024 Data Science Project &middot; Built with GitHub Pages
-      </footer>
-    </main>
-  </div>
 </body>
 </html>
