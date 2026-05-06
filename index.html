@@ -38,7 +38,6 @@
     padding: 48px 32px;
   }
 
-  /* Sidebar nav */
   nav.toc {
     position: sticky;
     top: 32px;
@@ -86,7 +85,6 @@
     color: var(--accent);
   }
 
-  /* Main content */
   main {
     min-width: 0;
   }
@@ -154,7 +152,6 @@
     font-style: italic;
   }
 
-  /* Contributions table */
   .contrib-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -216,7 +213,6 @@
     color: var(--text-muted);
   }
 
-  /* Code & inline elements */
   code {
     background: var(--surface-2);
     border: 1px solid var(--border);
@@ -244,7 +240,6 @@
     color: var(--accent);
   }
 
-  /* Figure placeholder */
   figure {
     margin: 24px 0;
     background: var(--surface);
@@ -274,7 +269,6 @@
     text-align: center;
   }
 
-  /* Responsive */
   @media (max-width: 860px) {
     .layout {
       grid-template-columns: 1fr;
@@ -312,8 +306,14 @@
     <main>
       <header class="hero">
         <div class="eyebrow">Fall 2024 Data Science Project</div>
-        <h1>Project Title Goes Here</h1>
-        <div class="authors">By <strong>Your Name</strong> &middot; <strong>Teammate Name</strong></div>
+        <h1>Jobs &amp; AI</h1>
+        <div class="authors">
+          By <strong>Grace Jagga</strong> &middot;
+          <strong>Venya Goyal</strong> &middot;
+          <strong>Hansini Chokkalingam</strong> &middot;
+          <strong>Aabha Belsare</strong> &middot;
+          <strong>Yasaswini Bommareddy</strong>
+        </div>
       </header>
 
       <!-- 1. Contributions -->
@@ -365,16 +365,23 @@
       <!-- 3. Data Curation -->
       <section id="data-curation">
         <h2><span class="num">03</span> Data Curation</h2>
-        <p class="placeholder">
-          Cite the source(s) of your data and explain what it is. Walk through how you
-          loaded and transformed it so it was ready for analysis &mdash; e.g., setting up a
-          database and querying with SQL, or building a <code>pandas</code> DataFrame.
+        <p>
+          We chose this dataset because artificial intelligence and the workforce are relevant topics to us as
+          college students, and this dataset has structured salary data on a global scale. The dataset
+          includes important variables like experience level, company size, and remote work ratio, which
+          could make for meaningful analysis over the course of this project. Analyzing this dataset could
+          help with understanding entry-level roles that are in demand, and how experience plays a role in
+          salary in the big scale tech industry.
         </p>
 
         <h3>Sources</h3>
-        <ul class="placeholder">
-          <li>Dataset 1 &mdash; link / citation</li>
-          <li>Dataset 2 &mdash; link / citation</li>
+        <ul>
+          <li>
+            <strong>Global AI &amp; Data Jobs Salary Dataset</strong> &mdash;
+            <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
+              https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
+            </a>
+          </li>
         </ul>
 
         <h3>Preprocessing</h3>
