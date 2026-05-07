@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Jobs & AI — SPRING 2026 Data Science Project</title>
+<title>Jobs &amp; AI — SPRING 2026 Data Science Project</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -16,7 +16,6 @@
     max-width: 1200px;
     margin: 0 auto;
   }
-
   h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; line-height: 1.2; }
   .subtitle { font-size: 0.9rem; font-weight: 700; color: #111; margin-bottom: 36px; }
   h2 { font-size: 1.2rem; font-weight: 700; margin: 40px 0 14px; }
@@ -24,204 +23,71 @@
   p { margin-bottom: 12px; color: #111; }
   a { color: #1a6fc4; text-decoration: none; }
   a:hover { text-decoration: underline; }
-
-  .contrib-table {
-    border-collapse: collapse;
-    margin: 8px 0 0 120px;
-    font-size: 0.9rem;
-  }
-  .contrib-table th {
-    text-align: left;
-    font-weight: 700;
-    padding: 6px 24px 6px 12px;
-    border-bottom: 1px solid #ccc;
-    color: #111;
-  }
-  .contrib-table td {
-    padding: 7px 32px 7px 12px;
-    vertical-align: top;
-    color: #111;
-  }
+  .contrib-table { border-collapse: collapse; margin: 8px 0 0 120px; font-size: 0.9rem; }
+  .contrib-table th { text-align: left; font-weight: 700; padding: 6px 24px 6px 12px; border-bottom: 1px solid #ccc; color: #111; }
+  .contrib-table td { padding: 7px 32px 7px 12px; vertical-align: top; color: #111; }
   .contrib-table tr:nth-child(odd) td { background: #eef3fb; }
   .contrib-table tr:nth-child(odd) td:first-child { color: #1a6fc4; }
-
-  .data-table {
-    border-collapse: collapse;
-    font-size: 0.9rem;
-    margin: 12px 0 16px;
-  }
-  .data-table th {
-    text-align: left;
-    font-weight: 700;
-    padding: 6px 48px 6px 0;
-    border-bottom: 1px solid #ccc;
-  }
-  .data-table td {
-    padding: 6px 48px 6px 0;
-    border-bottom: 1px solid #eee;
-    vertical-align: top;
-  }
+  .data-table { border-collapse: collapse; font-size: 0.9rem; margin: 12px 0 16px; }
+  .data-table th { text-align: left; font-weight: 700; padding: 6px 48px 6px 0; border-bottom: 1px solid #ccc; }
+  .data-table td { padding: 6px 48px 6px 0; border-bottom: 1px solid #eee; vertical-align: top; }
   .data-table td.val { color: #444; font-size: 0.87rem; max-width: 480px; }
-
-  /* df.head() preview table */
-  .preview-wrap {
-    overflow-x: auto;
-    margin: 12px 0 16px;
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-  }
-  .preview-table {
-    border-collapse: collapse;
-    font-size: 0.78rem;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    white-space: nowrap;
-    min-width: 100%;
-  }
+  .preview-wrap { overflow-x: auto; margin: 12px 0 16px; border: 1px solid #e1e4e8; border-radius: 4px; }
+  .preview-table { border-collapse: collapse; font-size: 0.78rem; font-family: "SFMono-Regular", Consolas, monospace; white-space: nowrap; min-width: 100%; }
   .preview-table thead tr { background: #f6f8fa; }
-  .preview-table th {
-    text-align: right;
-    font-weight: 700;
-    padding: 7px 14px;
-    border-bottom: 1px solid #ccc;
-    border-right: 1px solid #eee;
-    color: #111;
-  }
+  .preview-table th { text-align: right; font-weight: 700; padding: 7px 14px; border-bottom: 1px solid #ccc; border-right: 1px solid #eee; color: #111; }
   .preview-table th:first-child { text-align: left; }
-  .preview-table td {
-    text-align: right;
-    padding: 6px 14px;
-    border-bottom: 1px solid #eee;
-    border-right: 1px solid #f0f0f0;
-    color: #111;
-  }
+  .preview-table td { text-align: right; padding: 6px 14px; border-bottom: 1px solid #eee; border-right: 1px solid #f0f0f0; color: #111; }
   .preview-table td:first-child { text-align: left; color: #555; }
   .preview-table tr:nth-child(odd) td { background: #fafafa; }
   .preview-table .ellipsis { color: #aaa; }
-  .preview-note {
-    font-size: 0.8rem;
-    color: #666;
-    margin: 4px 0 16px;
-    font-style: italic;
-  }
-
-  /* dtype output */
-  .dtype-out {
-    background: #f6f8fa;
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-    padding: 12px 16px;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.82rem;
-    margin: 8px 0 16px;
-    line-height: 1.7;
-    color: #111;
-  }
-
+  .preview-note { font-size: 0.8rem; color: #666; margin: 4px 0 16px; font-style: italic; }
+  .dtype-out { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px; padding: 12px 16px; font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.82rem; margin: 8px 0 16px; line-height: 1.7; color: #111; }
+  .metrics-box { display: flex; gap: 24px; margin: 16px 0; }
+  .metric-card { background: #eef3fb; border: 1px solid #c5d8f5; border-radius: 6px; padding: 18px 32px; text-align: center; }
+  .metric-card .metric-val { font-size: 1.8rem; font-weight: 700; color: #1a6fc4; }
+  .metric-card .metric-label { font-size: 0.82rem; color: #555; margin-top: 4px; }
   ul.sources { margin: 8px 0 12px 20px; }
   ul.sources li { margin-bottom: 4px; }
-
-  pre {
-    background: #f6f8fa;
-    border: 1px solid #e1e4e8;
-    border-radius: 4px;
-    padding: 16px 18px;
-    overflow-x: auto;
-    font-size: 0.82rem;
-    margin: 8px 0 16px;
-    line-height: 1.55;
-  }
-  pre code {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    color: #111;
-  }
-
-  figure {
-    margin: 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 24px;
-    text-align: center;
-    background: #fafafa;
-    color: #888;
-    font-style: italic;
-  }
+  pre { background: #f6f8fa; border: 1px solid #e1e4e8; border-radius: 4px; padding: 16px 18px; overflow-x: auto; font-size: 0.82rem; margin: 8px 0 16px; line-height: 1.55; }
+  pre code { font-family: "SFMono-Regular", Consolas, monospace; color: #111; }
+  figure { margin: 20px 0; border: 1px solid #ddd; border-radius: 4px; padding: 24px; text-align: center; background: #fafafa; }
   figure img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
-  figcaption { margin-top: 10px; font-size: 0.85rem; color: #555; font-style: normal; }
-  .placeholder { color: #888; font-style: italic; }
-
-  @media (max-width: 700px) {
-    body { padding: 24px 20px; }
-    .contrib-table { margin-left: 0; }
-  }
+  figcaption { margin-top: 10px; font-size: 0.85rem; color: #555; }
+  @media (max-width: 700px) { body { padding: 24px 20px; } .contrib-table { margin-left: 0; } .metrics-box { flex-direction: column; } }
 </style>
 </head>
 <body>
 
-  <h1>🤖 Jobs &amp; AI</h1>
-  <p class="subtitle">CMSC 320 &middot; Fall 2024 Final Project Tutorial</p>
+<h1>🤖 Jobs &amp; AI</h1>
+<p class="subtitle">CMSC 320 &middot; Spring 2026 Final Project Tutorial</p>
 
-  <h2>Contributions</h2>
-  <table class="contrib-table">
-    <thead>
-      <tr>
-        <th>Member</th>
-        <th>Sections</th>
-        <th>1–2 sentence summary</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Grace Jagga</td>
-        <td>A, C</td>
-        <td>Brief summary of project idea and data exploration contributions.</td>
-      </tr>
-      <tr>
-        <td>Venya Goyal</td>
-        <td>B, D</td>
-        <td>Brief summary of dataset curation and ML design contributions.</td>
-      </tr>
-      <tr>
-        <td>Hansini Chokkalingam</td>
-        <td>E, G</td>
-        <td>Brief summary of ML training and final report creation.</td>
-      </tr>
-      <tr>
-        <td>Aabha Belsare</td>
-        <td>F, A</td>
-        <td>Brief summary of visualization work and project ideation.</td>
-      </tr>
-      <tr>
-        <td>Yasaswini Bommareddy</td>
-        <td>B, H</td>
-        <td>Brief summary of preprocessing and additional contributions.</td>
-      </tr>
-    </tbody>
-  </table>
+<h2>Contributions</h2>
+<table class="contrib-table">
+  <thead><tr><th>Member</th><th>Sections</th><th>1–2 sentence summary</th></tr></thead>
+  <tbody>
+    <tr><td>Grace Jagga</td><td>A, C</td><td>Proposed the project idea and led exploratory data analysis, including the salary-by-experience boxplot and summary statistics.</td></tr>
+    <tr><td>Venya Goyal</td><td>B, D</td><td>Handled dataset curation and preprocessing, and contributed to the design of the Random Forest ML pipeline.</td></tr>
+    <tr><td>Hansini Chokkalingam</td><td>E, G</td><td>Ran ML training and test data analysis, and assembled the final tutorial report.</td></tr>
+    <tr><td>Aabha Belsare</td><td>F, A</td><td>Produced the result visualizations including the feature importance and actual vs. predicted plots, and contributed to the project idea.</td></tr>
+    <tr><td>Yasaswini Bommareddy</td><td>B, H</td><td>Assisted with data preprocessing and contributed additional analysis including the job security Pearson correlation.</td></tr>
+  </tbody>
+</table>
 
-  <h2>Introduction</h2>
-  <p>
-    We chose this dataset because artificial intelligence and the workforce are relevant topics to us as
-    college students, and this dataset has structured salary data on a global scale. The dataset
-    includes important variables like experience level, company size, and remote work ratio, which
-    could make for meaningful analysis over the course of this project. Analyzing this dataset could
-    help with understanding entry-level roles that are in demand, and how experience plays a role in
-    salary in the big scale tech industry.
-  </p>
+<h2>Introduction</h2>
+<p>Artificial intelligence is reshaping the global workforce at an unprecedented pace, and as computer science students preparing to enter the job market, understanding how AI-related salaries are determined is directly relevant to our futures. This project uses the <em>Global AI &amp; Data Jobs Salary Dataset</em> to investigate what factors most strongly predict salary for AI and data roles worldwide.</p>
+<p>We ask three core questions: Does experience level significantly affect salary? Does the size of a company matter? And can we build a model that accurately predicts salary from a combination of role, location, and experience features? Answering these questions helps current and future job seekers understand what levers they can pull to maximize compensation, and gives employers a data-grounded view of the competitive salary landscape.</p>
 
-  <h2>Data Curation</h2>
+<h2>Data Curation</h2>
 
-  <h3>Sources</h3>
-  <ul class="sources">
-    <li>
-      <strong>Global AI &amp; Data Jobs Salary Dataset</strong> &mdash;
-      <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">
-        https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset
-      </a>
-    </li>
-  </ul>
+<h3>Sources</h3>
+<ul class="sources">
+  <li><strong>Global AI &amp; Data Jobs Salary Dataset</strong> &mdash; <a href="https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset" target="_blank">https://www.kaggle.com/datasets/mohankrishnathalla/global-ai-and-data-jobs-salary-dataset</a></li>
+</ul>
 
-  <h3>Loading the Dataset</h3>
-  <pre><code>import pandas as pd
+<h3>Loading the Dataset</h3>
+<p>We load the CSV directly into a pandas DataFrame and run a quick audit to confirm its shape, types, and completeness before touching any values.</p>
+<pre><code>import pandas as pd
 
 df = pd.read_csv("global_ai_jobs.csv")
 print(df.shape)
@@ -229,140 +95,72 @@ print(df.dtypes.value_counts())
 print(df.isnull().sum().sum())
 df.head()</code></pre>
 
-  <div class="dtype-out">
+<div class="dtype-out">
 (90000, 35)<br>
 int64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18<br>
 float64&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9<br>
 object&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8<br>
 Name: count, dtype: int64<br>
 Missing values: 0
-  </div>
+</div>
 
-  <div class="preview-wrap">
-    <table class="preview-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>id</th>
-          <th>country</th>
-          <th>job_role</th>
-          <th>ai_specialization</th>
-          <th>experience_level</th>
-          <th>experience_years</th>
-          <th>salary_usd</th>
-          <th>bonus_usd</th>
-          <th>education_required</th>
-          <th>industry</th>
-          <th class="ellipsis">...</th>
-          <th>vacation_days</th>
-          <th>skill_demand_score</th>
-          <th>automation_risk</th>
-          <th>job_security_score</th>
-          <th>career_growth_score</th>
-          <th>work_life_balance_score</th>
-          <th>promotion_speed</th>
-          <th>salary_percentile</th>
-          <th>cost_of_living_index</th>
-          <th>employee_satisfaction</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>0</td><td>1</td><td>UAE</td><td>Machine Learning Engineer</td><td>Reinforcement Learning</td><td>Entry</td><td>0</td><td>66465.0</td><td>5395</td><td>Master</td><td>Automotive</td><td class="ellipsis">...</td><td>27</td><td>12</td><td>76</td><td>57</td><td>65</td><td>73</td><td>15</td><td>55</td><td>1.23</td><td>76</td>
-        </tr>
-        <tr>
-          <td>1</td><td>2</td><td>USA</td><td>AI Engineer</td><td>LLM</td><td>Entry</td><td>1</td><td>75507.0</td><td>11713</td><td>Bootcamp</td><td>Retail</td><td class="ellipsis">...</td><td>27</td><td>54</td><td>29</td><td>69</td><td>60</td><td>51</td><td>15</td><td>58</td><td>0.87</td><td>67</td>
-        </tr>
-        <tr>
-          <td>2</td><td>3</td><td>Brazil</td><td>Research Scientist</td><td>Analytics</td><td>Entry</td><td>0</td><td>41660.0</td><td>5268</td><td>PhD</td><td>Healthcare</td><td class="ellipsis">...</td><td>13</td><td>12</td><td>49</td><td>70</td><td>59</td><td>68</td><td>37</td><td>13</td><td>2.13</td><td>61</td>
-        </tr>
-        <tr>
-          <td>3</td><td>4</td><td>India</td><td>Software Engineer AI</td><td>Computer Vision</td><td>Senior</td><td>6</td><td>43268.0</td><td>7975</td><td>Diploma</td><td>Tech</td><td class="ellipsis">...</td><td>30</td><td>80</td><td>47</td><td>79</td><td>65</td><td>55</td><td>46</td><td>74</td><td>1.49</td><td>56</td>
-        </tr>
-        <tr>
-          <td>4</td><td>5</td><td>Germany</td><td>Machine Learning Engineer</td><td>Computer Vision</td><td>Entry</td><td>0</td><td>69119.0</td><td>4758</td><td>Master</td><td>Retail</td><td class="ellipsis">...</td><td>24</td><td>82</td><td>47</td><td>64</td><td>52</td><td>69</td><td>17</td><td>21</td><td>0.87</td><td>72</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="preview-note">5 rows &times; 35 columns</p>
+<div class="preview-wrap">
+  <table class="preview-table">
+    <thead>
+      <tr><th></th><th>id</th><th>country</th><th>job_role</th><th>ai_specialization</th><th>experience_level</th><th>experience_years</th><th>salary_usd</th><th>bonus_usd</th><th>education_required</th><th>industry</th><th class="ellipsis">...</th><th>job_security_score</th><th>career_growth_score</th><th>work_life_balance_score</th><th>cost_of_living_index</th><th>employee_satisfaction</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>0</td><td>1</td><td>UAE</td><td>Machine Learning Engineer</td><td>Reinforcement Learning</td><td>Entry</td><td>0</td><td>66465.0</td><td>5395</td><td>Master</td><td>Automotive</td><td class="ellipsis">...</td><td>57</td><td>65</td><td>73</td><td>1.23</td><td>76</td></tr>
+      <tr><td>1</td><td>2</td><td>USA</td><td>AI Engineer</td><td>LLM</td><td>Entry</td><td>1</td><td>75507.0</td><td>11713</td><td>Bootcamp</td><td>Retail</td><td class="ellipsis">...</td><td>69</td><td>60</td><td>51</td><td>0.87</td><td>67</td></tr>
+      <tr><td>2</td><td>3</td><td>Brazil</td><td>Research Scientist</td><td>Analytics</td><td>Entry</td><td>0</td><td>41660.0</td><td>5268</td><td>PhD</td><td>Healthcare</td><td class="ellipsis">...</td><td>70</td><td>59</td><td>68</td><td>2.13</td><td>61</td></tr>
+      <tr><td>3</td><td>4</td><td>India</td><td>Software Engineer AI</td><td>Computer Vision</td><td>Senior</td><td>6</td><td>43268.0</td><td>7975</td><td>Diploma</td><td>Tech</td><td class="ellipsis">...</td><td>79</td><td>65</td><td>55</td><td>1.49</td><td>56</td></tr>
+      <tr><td>4</td><td>5</td><td>Germany</td><td>Machine Learning Engineer</td><td>Computer Vision</td><td>Entry</td><td>0</td><td>69119.0</td><td>4758</td><td>Master</td><td>Retail</td><td class="ellipsis">...</td><td>64</td><td>52</td><td>69</td><td>0.87</td><td>72</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="preview-note">5 rows &times; 35 columns</p>
 
-  <p>The dataset contains <strong>90,000 rows and 35 columns</strong>. Of these, 18 are integer features, 9 are floats, and 8 are categorical object columns. A check for missing values returned 0, meaning the dataset is fully complete with no nulls to handle and no columns needed to be dropped.</p>
+<p>The dataset contains <strong>90,000 rows and 35 columns</strong>. Of these, 18 are integer features, 9 are floats, and 8 are categorical object columns. A check for missing values returned 0, meaning the dataset is fully complete with no nulls to handle.</p>
 
-  <h3>Categorical Features</h3>
-  <pre><code>categorical_features = df.select_dtypes(include=['object']).columns
+<h3>Categorical Features</h3>
+<pre><code>categorical_features = df.select_dtypes(include=['object']).columns
 for col in categorical_features:
     print(f"{col}: {df[col].unique()}")</code></pre>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Column</th><th>Unique values</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>country</td>
-        <td class="val">UAE, USA, Brazil, India, Germany, Japan, Australia, France, Singapore, Netherlands, Canada, UK</td>
-      </tr>
-      <tr>
-        <td>job_role</td>
-        <td class="val">Machine Learning Engineer, AI Engineer, Research Scientist, Software Engineer AI, Data Analyst, Computer Vision Engineer, NLP Engineer, Data Scientist</td>
-      </tr>
-      <tr>
-        <td>ai_specialization</td>
-        <td class="val">Reinforcement Learning, LLM, Analytics, Computer Vision, NLP, MLOps, Forecasting, Generative AI</td>
-      </tr>
-      <tr>
-        <td>experience_level</td>
-        <td class="val">Entry, Senior, Mid, Lead</td>
-      </tr>
-      <tr>
-        <td>education_required</td>
-        <td class="val">Master, Bootcamp, PhD, Diploma, Bachelor</td>
-      </tr>
-      <tr>
-        <td>industry</td>
-        <td class="val">Automotive, Retail, Healthcare, Tech, Consulting, Telecom, Energy, Gaming, Education, Finance</td>
-      </tr>
-      <tr>
-        <td>company_size</td>
-        <td class="val">Small, Large, Medium, Startup, Enterprise</td>
-      </tr>
-      <tr>
-        <td>work_mode</td>
-        <td class="val">Remote, Onsite, Hybrid</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="data-table">
+  <thead><tr><th>Column</th><th>Unique values</th></tr></thead>
+  <tbody>
+    <tr><td>country</td><td class="val">UAE, USA, Brazil, India, Germany, Japan, Australia, France, Singapore, Netherlands, Canada, UK</td></tr>
+    <tr><td>job_role</td><td class="val">Machine Learning Engineer, AI Engineer, Research Scientist, Software Engineer AI, Data Analyst, Computer Vision Engineer, NLP Engineer, Data Scientist</td></tr>
+    <tr><td>ai_specialization</td><td class="val">Reinforcement Learning, LLM, Analytics, Computer Vision, NLP, MLOps, Forecasting, Generative AI</td></tr>
+    <tr><td>experience_level</td><td class="val">Entry, Senior, Mid, Lead</td></tr>
+    <tr><td>education_required</td><td class="val">Master, Bootcamp, PhD, Diploma, Bachelor</td></tr>
+    <tr><td>industry</td><td class="val">Automotive, Retail, Healthcare, Tech, Consulting, Telecom, Energy, Gaming, Education, Finance</td></tr>
+    <tr><td>company_size</td><td class="val">Small, Large, Medium, Startup, Enterprise</td></tr>
+    <tr><td>work_mode</td><td class="val">Remote, Onsite, Hybrid</td></tr>
+  </tbody>
+</table>
 
-  <h3>Salary Distribution</h3>
-  <pre><code>print(df['salary_usd'].describe())</code></pre>
+<h3>Salary Distribution</h3>
+<pre><code>print(df['salary_usd'].describe())</code></pre>
+<table class="data-table">
+  <thead><tr><th>Statistic</th><th>Value (USD)</th></tr></thead>
+  <tbody>
+    <tr><td>Count</td><td>90,000</td></tr>
+    <tr><td>Mean</td><td>$96,331</td></tr>
+    <tr><td>Std dev</td><td>$43,280</td></tr>
+    <tr><td>Min</td><td>$28,000</td></tr>
+    <tr><td>25th percentile</td><td>$64,677</td></tr>
+    <tr><td>Median</td><td>$87,544</td></tr>
+    <tr><td>75th percentile</td><td>$123,906</td></tr>
+    <tr><td>Max</td><td>$212,750</td></tr>
+  </tbody>
+</table>
+<p>The average salary across all roles and countries is $96,331, with a wide standard deviation of $43,280 reflecting the diversity of roles, experience levels, and countries in the dataset.</p>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Statistic</th><th>Value (USD)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Count</td><td>90,000</td></tr>
-      <tr><td>Mean</td><td>$96,331</td></tr>
-      <tr><td>Std dev</td><td>$43,280</td></tr>
-      <tr><td>Min</td><td>$28,000</td></tr>
-      <tr><td>25th percentile</td><td>$64,677</td></tr>
-      <tr><td>Median</td><td>$87,544</td></tr>
-      <tr><td>75th percentile</td><td>$123,906</td></tr>
-      <tr><td>Max</td><td>$212,750</td></tr>
-    </tbody>
-  </table>
-
-  <p>The average salary across all roles and countries is $96,331. There is a wide spread with a standard deviation of $43,280, reflecting the diversity of roles, experience levels, and countries in the dataset. The salary range runs from $28,000 at the low end up to $212,750 at the top.</p>
-
-  <h3>Handling Outliers</h3>
-  <p>
-    Extreme values were moderated using an inter quartile capping rule that replaces observations
-    lying beyond 1.5 times the IQR with the nearest boundary. This was applied to three key numeric columns:
-    <code>salary_usd</code>, <code>bonus_usd</code>, and <code>weekly_hours</code>.
-  </p>
-
-  <pre><code>def cap_outliers(df, col):
+<h3>Handling Outliers</h3>
+<p>Extreme values were moderated using an interquartile capping rule that replaces observations lying beyond 1.5× the IQR with the nearest boundary. This was applied to <code>salary_usd</code>, <code>bonus_usd</code>, and <code>weekly_hours</code>.</p>
+<pre><code>def cap_outliers(df, col):
     Q1, Q3 = df[col].quantile(0.25), df[col].quantile(0.75)
     IQR = Q3 - Q1
     lo, hi = Q1 - 1.5*IQR, Q3 + 1.5*IQR
@@ -375,44 +173,26 @@ df = cap_outliers(df, 'salary_usd')
 df = cap_outliers(df, 'bonus_usd')
 df = cap_outliers(df, 'weekly_hours')</code></pre>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Column</th><th>Outliers detected</th><th>Action</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>salary_usd</td><td>1,007</td><td>Capped to IQR bounds</td></tr>
-      <tr><td>bonus_usd</td><td>2,748</td><td>Capped to IQR bounds</td></tr>
-      <tr><td>weekly_hours</td><td>0</td><td>No action needed</td></tr>
-    </tbody>
-  </table>
+<table class="data-table">
+  <thead><tr><th>Column</th><th>Outliers detected</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr><td>salary_usd</td><td>1,007</td><td>Capped to IQR bounds</td></tr>
+    <tr><td>bonus_usd</td><td>2,748</td><td>Capped to IQR bounds</td></tr>
+    <tr><td>weekly_hours</td><td>0</td><td>No action needed</td></tr>
+  </tbody>
+</table>
+<p>After capping, the dataset retains all 90,000 rows. No rows were dropped during preprocessing.</p>
 
-  <p>
-    After capping, the dataset retains all 90,000 rows. The <code>salary_usd</code> and <code>bonus_usd</code>
-    columns were converted from integer to float type as a result of the clipping operation. No rows were
-    dropped during preprocessing.
-  </p>
+<h2>Exploratory Data Analysis</h2>
+<p>With the data cleaned, we ran three exploratory analyses to test which features carry signal against <code>salary_usd</code>. Each isolates a single variable so we can decide which features are worth carrying forward into the modeling stage.</p>
 
-  <h2>Exploratory Data Analysis</h2>
-  <p>
-    With the data cleaned, we ran three exploratory analyses to test which features carry signal
-    against <code>salary_usd</code>. Each one isolates a single variable so we can decide which
-    features are worth carrying forward into the modeling stage.
-  </p>
-
-  <h3>Salary by Experience Level</h3>
-  <p>
-    We grouped the data by <code>experience_level</code>, sorted the levels by mean salary, and
-    plotted the resulting distributions as a boxplot. This lets us compare not just the average pay
-    at each tier but also the spread and presence of outliers.
-  </p>
-
-  <pre><code>import matplotlib.pyplot as plt
+<h3>Salary by Experience Level</h3>
+<p>We grouped the data by <code>experience_level</code>, sorted the levels by mean salary, and plotted distributions as a boxplot. For more on grouped boxplots, see the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.boxplot.html" target="_blank">matplotlib boxplot docs</a>.</p>
+<pre><code>import matplotlib.pyplot as plt
 
 mean_salaries = df.groupby("experience_level")["salary_usd"].mean()
 sorted_levels = mean_salaries.sort_values().index
-
-groups = [df[df["experience_level"] == lvl]["salary_usd"].dropna()
-          for lvl in sorted_levels]
+groups = [df[df["experience_level"] == lvl]["salary_usd"].dropna() for lvl in sorted_levels]
 
 fig, ax = plt.subplots()
 ax.boxplot(groups, tick_labels=sorted_levels)
@@ -421,134 +201,176 @@ ax.set_xlabel("Experience Level")
 ax.set_ylabel("Salary (USD)")
 plt.show()</code></pre>
 
-  <figure>
-    <img src="salary_by_experience.png" alt="Salary distribution by experience level">
-    <figcaption>Figure 1. Salary distributions grouped by experience level, sorted by mean salary.</figcaption>
-  </figure>
+<figure>
+  <img src="salary_by_experience.png" alt="Salary distribution by experience level">
+  <figcaption>Figure 1. Salary distributions grouped by experience level, sorted by mean salary.</figcaption>
+</figure>
 
-  <p>
-    From the boxplot, salary increases with experience level, with medians ranging from around $65k
-    for entry-level roles up to roughly $150k for lead roles. The spread of the data widens at higher
-    levels, meaning senior and lead salaries are more variable in general. There are also notable
-    outliers at each level, suggesting there are factors besides experience that influence salary.
-  </p>
+<p>Salary increases clearly with experience level, with medians ranging from around $65k for entry-level roles up to roughly $150k for lead roles. The spread widens at higher levels, and notable outliers appear at each tier, suggesting additional factors beyond experience also influence pay.</p>
 
-  <h3>Salary at Large vs. Startup Companies</h3>
-  <p>
-    Next we asked whether company size meaningfully predicts pay. We ran a two-sample
-    <em>t</em>-test comparing salaries at large companies against startups, and visualized the two
-    distributions side-by-side.
-  </p>
-
-  <pre><code>from scipy.stats import ttest_ind
+<h3>Salary at Large vs. Startup Companies</h3>
+<p>We ran a two-sample <em>t</em>-test comparing salaries at large companies against startups. The two-sample t-test is appropriate here because we have two independent groups and want to test whether their population means differ. See <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html" target="_blank">scipy.stats.ttest_ind</a> for details.</p>
+<pre><code>from scipy.stats import ttest_ind
 
 large   = df[df["company_size"] == "Large"]["salary_usd"].dropna()
 startup = df[df["company_size"] == "Startup"]["salary_usd"].dropna()
 
 t_stat, p = ttest_ind(large, startup)
 print(f"T-statistic: {t_stat:.3f}, p-value: {p:.4f}")
-# T-statistic: -0.866, p-value: 0.3867
+# T-statistic: -0.866, p-value: 0.3867</code></pre>
 
-plt.boxplot([large, startup], tick_labels=["Large", "Startup"])
-plt.title("Salary: Large vs Startup Companies")
-plt.xlabel("Company Size")
-plt.ylabel("Salary (USD)")
-plt.show()</code></pre>
+<table class="data-table">
+  <thead><tr><th>Statistic</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>t-statistic</td><td>&minus;0.866</td></tr>
+    <tr><td>p-value</td><td>0.3867</td></tr>
+    <tr><td>Significant at &alpha; = 0.05?</td><td>No</td></tr>
+  </tbody>
+</table>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Statistic</th><th>Value</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>t-statistic</td><td>&minus;0.866</td></tr>
-      <tr><td>p-value</td><td>0.3867</td></tr>
-      <tr><td>Significant at &alpha; = 0.05?</td><td>No</td></tr>
-    </tbody>
-  </table>
+<figure>
+  <img src="salary_size.png" alt="Salary distributions at large vs. startup companies">
+  <figcaption>Figure 2. Salary distributions at large companies compared to startups.</figcaption>
+</figure>
 
-  <figure>
-    <img src="salary_size.png" alt="Salary distributions at large vs. small companies">
-    <figcaption>Figure 2. Salary distributions at large companies compared to startups.</figcaption>
-  </figure>
+<p>There is no statistically significant difference between large and startup salaries (<em>t</em> = &minus;0.866, <em>p</em> = 0.387). Both groups have similar medians around $87k. Company size is not a meaningful standalone predictor of salary, which guided our feature selection for the model.</p>
 
-  <p>
-    From this two-sample <em>t</em>-test comparing salaries at large versus startup companies, there
-    is no statistically significant difference (<em>t</em> = &minus;0.866, <em>p</em> = 0.387). The
-    boxplots confirm this visually since both groups have similar medians around $87k and similar
-    spreads. This suggests company size is not a meaningful predictor of salary in this dataset,
-    which is an important insight to consider when selecting features for the model.
-  </p>
-
-  <h3>Salary vs. Job Security Score</h3>
-  <p>
-    For our continuous test, we computed the Pearson correlation between
-    <code>job_security_score</code> and <code>salary_usd</code> and plotted the relationship as a
-    scatter to see whether higher-security roles also tend to pay more.
-  </p>
-
-  <pre><code>from scipy.stats import pearsonr
+<h3>Salary vs. Job Security Score</h3>
+<p>We computed the Pearson correlation between <code>job_security_score</code> and <code>salary_usd</code>. Pearson correlation measures the linear relationship between two continuous variables. See <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html" target="_blank">scipy.stats.pearsonr</a> for details.</p>
+<pre><code>from scipy.stats import pearsonr
 
 corr, p = pearsonr(df["job_security_score"], df["salary_usd"])
 print(f"Pearson r: {corr:.3f}, p-value: {p:.4g}")
-# Pearson r: 0.434, p-value: < 0.0001
+# Pearson r: 0.434, p-value: &lt; 0.0001</code></pre>
 
-plt.scatter(df["job_security_score"], df["salary_usd"], alpha=0.3)
-plt.title("Salary vs Job Security Score")
-plt.xlabel("Job Security Score")
-plt.ylabel("Salary (USD)")
+<table class="data-table">
+  <thead><tr><th>Statistic</th><th>Value</th></tr></thead>
+  <tbody>
+    <tr><td>Pearson r</td><td>0.434</td></tr>
+    <tr><td>p-value</td><td>&lt; 0.0001</td></tr>
+  </tbody>
+</table>
+
+<figure>
+  <img src="salary_job_security.png" alt="Salary vs Job Security Score">
+  <figcaption>Figure 3. Each point is a job posting; the upward trend reflects a moderate positive correlation between job security score and salary.</figcaption>
+</figure>
+
+<p>There is a moderate positive correlation between job security score and salary (Pearson <em>r</em> = 0.434, <em>p</em> &lt; 0.0001). This is statistically significant and confirmed that <code>job_security_score</code> should be included as a feature in our regression model.</p>
+
+<h3>Summary of EDA Findings</h3>
+<p>Three takeaways shaped our modeling decisions: experience level is a clear predictor of salary; company size alone is not significant; and job security score is the strongest single continuous signal. These findings directly informed which features we prioritized in the ML stage.</p>
+
+<h2>Primary Analysis</h2>
+<p>Based on our EDA, we chose a <strong>Random Forest Regressor</strong> to predict <code>salary_usd</code>. Random Forest was selected because it handles a mix of categorical and numeric features natively after label encoding, is robust to the outliers we observed, and produces built-in feature importance scores for interpretability. For a deeper dive, see the <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees" target="_blank">scikit-learn ensemble documentation</a>.</p>
+<p>We encoded all eight categorical columns using <code>LabelEncoder</code> and selected ten features that our EDA identified as likely predictors. The data was split 80/20 into training and test sets using a fixed random seed for reproducibility.</p>
+
+<pre><code># =============================================================
+# Primary Analysis: Random Forest Salary Prediction
+# =============================================================
+# Based on our EDA findings, we use a Random Forest Regressor
+# to predict salary_usd from a mix of categorical and numeric
+# features. Random Forest was chosen because it handles both
+# types of features well, is robust to outliers, and provides
+# built-in feature importance scores that tell us which
+# variables drive salary the most.
+#
+# We split the data 80/20 into training and test sets, train
+# the model, and evaluate using Mean Absolute Error (MAE) and
+# R² score. We then visualize feature importances and plot
+# actual vs. predicted salaries to assess model performance.
+# =============================================================
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import mean_absolute_error, r2_score
+
+df_ml = df.copy()
+cat_cols = ['experience_level', 'country', 'job_role', 'company_size',
+            'work_mode', 'industry', 'education_required', 'ai_specialization']
+le = LabelEncoder()
+for col in cat_cols:
+    df_ml[col] = le.fit_transform(df_ml[col])
+
+features = ['experience_level', 'job_security_score', 'experience_years',
+            'skill_demand_score', 'career_growth_score', 'cost_of_living_index',
+            'country', 'job_role', 'company_size', 'work_mode']
+X = df_ml[features]
+y = df_ml['salary_usd']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+rf = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+rf.fit(X_train, y_train)
+y_pred = rf.predict(X_test)
+
+mae = mean_absolute_error(y_test, y_pred)
+r2  = r2_score(y_test, y_pred)
+print(f"MAE: ${mae:,.0f}")
+print(f"R² Score: {r2:.4f}")</code></pre>
+
+<div class="metrics-box">
+  <div class="metric-card">
+    <div class="metric-val">$9,412</div>
+    <div class="metric-label">Mean Absolute Error</div>
+  </div>
+  <div class="metric-card">
+    <div class="metric-val">0.9225</div>
+    <div class="metric-label">R² Score</div>
+  </div>
+</div>
+
+<p>The model achieved an R² of <strong>0.9225</strong>, meaning it explains 92.25% of the variance in salary across the test set. The Mean Absolute Error of <strong>$9,412</strong> means predictions are within about $9,400 of the actual value on average — roughly 10% error across a salary range of $28k–$212k, which is strong performance for a real-world salary dataset.</p>
+
+<h2>Visualization</h2>
+<p>We produced two plots to interpret the model's behavior and evaluate its performance.</p>
+
+<h3>Feature Importances</h3>
+<p>Feature importance measures the average reduction in prediction error attributed to each variable across all decision trees in the forest. Higher values indicate that splits on that variable more consistently reduced prediction error.</p>
+
+<pre><code>importances = pd.Series(rf.feature_importances_, index=features).sort_values()
+fig, ax = plt.subplots(figsize=(8, 5))
+importances.plot(kind='barh', ax=ax, color='steelblue')
+ax.set_title("Feature Importances — Random Forest")
+ax.set_xlabel("Importance Score")
+plt.tight_layout()
 plt.show()</code></pre>
 
-  <table class="data-table">
-    <thead>
-      <tr><th>Statistic</th><th>Value</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Pearson r</td><td>0.434</td></tr>
-      <tr><td>p-value</td><td>&lt; 0.0001</td></tr>
-    </tbody>
-  </table>
+<figure>
+  <img src="feature_importance.png" alt="Feature importances from Random Forest model">
+  <figcaption>Figure 4. Feature importances from the trained Random Forest. experience_years (~0.53) and country (~0.33) dominate, together accounting for roughly 85% of total importance.</figcaption>
+</figure>
 
-  <figure>
-    <img src="salary_job_security.png" alt="Salary vs Job Security Score">
-    <figcaption>Figure 3. Each point is a job posting; the upward trend reflects a moderate positive correlation.</figcaption>
-  </figure>
+<p><code>experience_years</code> is by far the most important feature (~0.53), followed by <code>country</code> (~0.33). Together they account for roughly 85% of the model's predictive power. <code>job_role</code> adds a moderate contribution (~0.08), while <code>company_size</code> and <code>work_mode</code> have near-zero importance — consistent with our EDA finding that company size does not significantly predict salary.</p>
 
-  <p>
-    From this output, we can see there is a moderate positive correlation between job security score
-    and salary. The Pearson <em>r</em> value is 0.434 (<em>p</em> &lt; 0.0001), meaning higher job
-    security comes with higher pay. This is statistically significant and visually confirmed by the
-    upward trend in the scatter plot. This suggests that job security score is a meaningful feature
-    that could influence salary prediction in further analysis.
-  </p>
+<h3>Actual vs. Predicted Salary</h3>
+<p>The scatter plot below compares the model's predictions against true salaries on the held-out test set. Points on the red dashed line represent a perfect prediction; the tighter the cloud around the diagonal, the better the model generalizes.</p>
 
-  <h3>Summary of Findings</h3>
-  <p>
-    Three takeaways from the EDA shape our modeling decisions. First, experience level is a clear
-    ordinal predictor of salary and should be encoded as such. Second, company size on its own does
-    not significantly predict salary, so we will only include it if it adds value in combination with
-    other features. Third, job security score is the strongest single-variable signal we found, and
-    will be a core feature in our regression model.
-  </p>
+<pre><code>fig, ax = plt.subplots(figsize=(6, 6))
+ax.scatter(y_test, y_pred, alpha=0.2, color='steelblue', s=5)
+mn, mx = y_test.min(), y_test.max()
+ax.plot([mn, mx], [mn, mx], 'r--', linewidth=1.5, label='Perfect prediction')
+ax.set_xlabel("Actual Salary (USD)")
+ax.set_ylabel("Predicted Salary (USD)")
+ax.set_title("Actual vs Predicted Salary")
+ax.legend()
+plt.tight_layout()
+plt.show()</code></pre>
 
-  <h2>Primary Analysis</h2>
-  <p class="placeholder">
-    Based on what you found in EDA, pick a machine learning technique and explain why you chose
-    it, how you trained it, and how you evaluated it.
-  </p>
+<figure>
+  <img src="actual_vs_predicted.png" alt="Actual vs predicted salary scatter plot">
+  <figcaption>Figure 5. Each point is a test-set observation. The dense cloud tracks closely along the perfect-prediction diagonal across the full salary range.</figcaption>
+</figure>
 
-  <h2>Visualization</h2>
-  <p class="placeholder">
-    Explain the results and insights of your primary analysis with at least one plot.
-  </p>
-  <figure>
-    [ Your plot will go here ]
-    <figcaption>Figure 4. Caption describing what the plot shows.</figcaption>
-  </figure>
+<p>The predictions track the diagonal closely from entry-level roles around $30k up to senior roles above $200k. There is modest spread that widens slightly at higher salaries — typical for salary regression, where high-earner compensation is more variable due to factors like equity and negotiation that are not captured in the dataset.</p>
 
-  <h2>Insights &amp; Conclusions</h2>
-  <p class="placeholder">
-    Wrap up: what did you learn, and what should the reader take away?
-  </p>
+<h2>Insights &amp; Conclusions</h2>
+<p>This project set out to understand what drives salary in AI and data jobs globally. Our analysis produced three clear takeaways.</p>
+<p><strong>Years of experience and country of employment are by far the strongest predictors of salary.</strong> The feature importance results show these two variables alone explain roughly 85% of salary variation. For job seekers, this means accumulating hands-on experience and being strategic about which market you work in matters far more than which company size or work mode you choose.</p>
+<p><strong>Company size does not significantly affect pay.</strong> Both the EDA t-test (p = 0.387) and the near-zero feature importance of <code>company_size</code> confirm this. Startups and large enterprises pay comparably in this dataset, likely reflecting global competition for AI talent leveling the playing field.</p>
+<p><strong>A Random Forest model can predict AI salaries with high accuracy.</strong> With an R² of 0.9225 and a MAE of $9,412, the model performs well across the full salary range. This suggests that despite the diversity of roles, countries, and industries, salary follows predictable enough patterns that a small set of features can reliably estimate it.</p>
+<p>For a reader entering the AI job market, the key message is: invest in years of experience, be open to geographic mobility, and do not over-index on company size when evaluating offers. For future work, it would be interesting to apply this analysis to a longitudinal dataset to track how these salary drivers shift as AI adoption accelerates over time.</p>
 
 </body>
 </html>
